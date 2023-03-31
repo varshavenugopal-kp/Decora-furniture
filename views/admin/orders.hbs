@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/stylesheets/admin.css">
+
+{{>admin-header}}
+
+
+<div class="p-5">
+<table class="table" id="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Location</th>
+      <th scope="col">Total Amount</th>
+      <th scope="col">Payment Method</th>
+      <th scope="col">Status</th>
+       <th scope="col"></th>
+       
+    </tr>
+  </thead>
+ 
+  <tbody>
+     {{#each orderList}}
+    <tr>
+      <th scope="row">{{deliveryDetails.name}}</th>
+      <td>{{deliveryDetails.address}},{{deliveryDetails.city}},{{deliveryDetails.state}}</td>
+      
+      <td>{{totalAmount.[0].total}}</td>
+     
+      <td>{{paymentMethod}}</td>
+    <td>{{status}} </td>
+<td> <a class="btn btn-warning me-4" href="/admin/order-management/{{_id}}">Details</a></td>
+     
+{{/each}}
+    </tbody>
+</table> 
+</div>
+<script>
+    $(document).ready(function(){
+        $('#table').dataTable();
+    })
+</script>

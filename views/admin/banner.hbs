@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="/stylesheets/admin.css">
+{{>admin-header}}
+<div class="container mt-5">
+    <div class="row">
+    <form action="/admin/banner-add" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/banner-images/banner.jpg" width="100%" id="img1">
+        </div>
+        <div class="col-md-6">
+           <label class="form-label" for="customFile">Banner image</label>
+<input type="file" class="form-control" id="customFile" name="bannerImage" onchange="viewImage(event,'main')" />
+ {{!-- <label class="form-label mt-4" for="customFile">Banner text</label>
+<input type="text" id="banner-text" name="bannerText" class="form-control"/> --}}
+<button type="submit" class="btn btn-warning mt-4" style="float: right;">Add</button>
+        </div></div>
+    </form>
+</div></div>
+<script>
+    function viewImage(event,name){
+        document.getElementById(name).src=URL.createObjectURL(event.target.files[0])
+    }
+</script>

@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="/stylesheets/admin.css">
+
+{{>admin-header}}
+
+
+
+               
+
+            <div class="cart-table-area mt-5">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7">
+                        <div class="checkout_details_area clearfix">
+
+                            <div class="cart-title">
+                                <h2>EDIT PRODUCT</h2>
+                            </div>
+
+                            <form method="post" action="/admin/product-edit/{{products._id}}" enctype="multipart/form-data">
+                                <div class="row">
+                                    
+                                    <div class="col-12 mb-3">
+                                        <input type="text" name="pname" class="form-control" id="name" placeholder="Product Name" value="{{products.pname}}">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <input type="text" name="brand" class="form-control" id="brand" placeholder="Brand" value="{{products.brand}}">
+                                    </div>
+                                     <div class="col-12 mb-3">
+                                        <select class="w-100" id="country" name="category">
+                                            <option value="" selected>{{products.category}}</option>
+                                          {{#each categoryData}}
+                                    
+                                       <option value="{{category}}">{{category}}</option>
+                                       {{/each}}
+                                    </select>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <input type="text" name="price" class="form-control mb-3" id="price" placeholder="Price" value="{{products.price}}">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <input type="text" name="stock" class="form-control" id="stock" placeholder="Stock" value="{{products.stock}}">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <input type="text" name="discount" class="form-control" id="discount" placeholder="Discount" value="{{products.discount}}">
+                                    </div>
+                                   
+                                    <div class="col-12 mb-3">
+                                        <textarea name="desc"  class="form-control w-100" id="comment" cols="30" rows="10" placeholder="enter a description about the product" noresize>{{products.desc}}</textarea>
+                                    </div>
+                                     <div class="d-flex">
+                                        {{#each products.image}}
+                                        <img id="{{@index}}"  class="ms-2" src="/product-images/{{[]}}.jpg" alt="" width="130px">
+                                        {{!-- <i class="fa-solid fa-file-pen">
+                                        <input type="file" name="image" id="file" accept="image/*" required/></i> --}}
+                                           <label for="file">
+  <i class="fa-solid fa-file-pen"></i>
+  <input type="file" id="file" style="display: none" name="{{[]}}" accept="image/jpg,image/png" data-original-title="upload photos">
+</label>
+
+
+
+                                        {{/each}}
+                                    </div>
+
+                    <p class="text-danger">{{err}}</p>
+                </div>
+                
+                                    <div class="d-flex justify-content-center">
+                                    <div class="cart-btn mt-50">
+                                <button type="submit" class="btn amado-btn ">UPDATE</a>
+                            </div></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+            {{!-- </div> --}}
+        {{!-- </div></div> --}}
+                <!-- Single Catagory -->
+               
+    <!-- ##### Main Content Wrapper End ##### -->
+
+    <!-- ##### Newsletter Area Start ##### -->
+
+    <!-- ##### Newsletter Area End ##### -->
+
+  

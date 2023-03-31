@@ -1,0 +1,86 @@
+<div style="height: 20px; width:100%; background-color:#FBB710"></div>
+<nav class="navbar navbar-expand-md bg-body-tertiary">
+  <div class="container-xl">
+    <div class="navbar-brand mt-3" >
+      <img src="/img/core-img/decorablack.png" alt="">
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/user-list">Users</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Product
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/admin/product-add">Add Product</a></li>
+            <li><a class="dropdown-item" href="/admin/product-list">Products list</a></li>
+           
+            {{!-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+          </ul>
+        </li>
+        {{!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li> --}}
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/category-add">Categories</a>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Orders
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/admin/orders">Orders</a></li>
+            <li><a class="dropdown-item" href="/admin/product-list">Order Manage</a></li>
+           
+            {{!-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+          </ul>
+        </li>
+        
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Coupon
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/admin/coupon-list">Coupon list</a></li>
+            <li><a class="dropdown-item" href="/admin/coupon-add">Add Coupon</a></li>
+           
+           
+            {{!-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+          </ul>
+        </li>
+
+
+
+         {{!-- <li class="nav-item">
+          <a class="nav-link" href="/admin/coupon-add">Coupon</a>
+        </li> --}}
+         <li class="nav-item">
+          <a class="nav-link" href="/admin/banner-add">banner</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/admin/sales-report">Sales Report</a>
+        </li>
+        
+          
+    </div>
+  </div>
+</nav>

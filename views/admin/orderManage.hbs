@@ -1,0 +1,185 @@
+<link rel="stylesheet" href="/stylesheets/admin.css">
+{{>admin-header}}
+
+
+{{!--<div class="row p-5">
+   <div class="col-lg-6 d-flex" style="border-width:2px; border-style:solid; border-color:rgb(118, 110, 110); height: 45vh; overflow-x: scroll;overflow-y:hidden ;">
+      {{#each orderDetails.products}}
+      <div class="col-lg-6  mt-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+  </div>
+  <div class="col-md-6">
+    <div style="border-width:2px; border-style:solid; border-color:rgb(118, 110, 110); height: 45vh; ">
+      <div class="ps-2">
+        <h5 class="mt-2">Shipping Address</h5>
+        <p>{{orderDetails.deliveryDetails.name}}</p>
+        <p>{{orderDetails.deliveryDetails.address}}</p>
+        <p>{{orderDetails.deliveryDetails.city}},{{orderDetails.deliveryDetails.state}}</p>
+        <p>{{orderDetails.deliveryDetails.zip}}</p>
+        <p>{{orderDetails.deliveryDetails.phone}}</p>
+        <p>{{orderDetails.deliveryDetails.email}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+  <div class="row p-5">
+   <div class="col-lg-6 d-flex" style="border-width:2px; border-style:solid; border-color:rgb(118, 110, 110); height: 45vh;">
+     <div class="ps-2">
+        <h5 class="mt-2">Payment Details</h5>
+        <p>Total amount:{{orderDetails.totalAmount.[0].total}}</p>
+        
+        <p>Payment Method:{{orderDetails.paymentMethod}}</p>
+       
+      </div>
+  </div>
+  <div class="col-md-6">
+    <div style="border-width:2px; border-style:solid; border-color:rgb(118, 110, 110); height: 45vh; ">
+      <div class="ps-2">
+         {{#if (eq orderDetails.status "order-cancelled")}}
+         <h5 class="mt-2">Payment status</h5>
+          <img src="/img/stamp.jpg" style="width: 170px;">
+          {{else}}
+
+        <h5 class="mt-2">Payment status</h5>
+       <form action="/admin/order-management/{{orderId}}" method="post">
+          <div class="mt-5">
+            <select name="order" id="order" style="height:30px;">
+              <option value="order-out-for-delivery">Order out for delivery</option>
+              <option value="order-delivered">Order delivered</option>
+              <option value="order-cancelled">Order cancelled</option>
+            </select>
+          </div>
+          <input type="text" name="orderId" value="{{orderId}}" hidden>
+          <br><br>
+          <button class="btn btn-warning mt-4">Update status</button>
+         
+
+        </form>{{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+{{!-- <div class="row p-4">
+  <div class="col-md-6">
+    <div class="mb-1" style="border-width:2px; border-style:solid; border-color:rgb(118, 110, 110); height: 45vh; ">
+      <div class="ps-2">
+        <h5 class="mt-2">Payment Details</h5>
+        <p>Total amount:{{orderDetails.totalAmount.[0].total}}</p>
+        <p>Payment Method:{{orderDetails.paymentMethod}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div style="border-width:2px; border-style:solid; border-color:rgb(118, 110, 110); height: 45vh; ">
+      <div class="ps-2">
+        <form action="/admin/order-management/{{orderId}}" method="post">
+          <div class="mt-5">
+            <select name="order" id="orderStatus" style="height:30px;">
+              <option value="order-out-for-delivery">Order out for delivery</option>
+              <option value="order-delivered">Order delivered</option>
+              <option value="order-cancelled">Order cancelled</option>
+            </select>
+          </div>
+          <input type="text" name="orderId" value="{{orderId}}" hidden>
+          <br><br>
+          <button class="btn btn-warning mt-4">Update status</button>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div> --}} 
+
+<div class="container mt-5">
+  <div class="row gx-0 gy-3">
+     {{!-- {{#each orderDetails.products}} --}}
+    <div class="col-md-6">
+      <div class="card h-100">
+        
+        <div class="card-body" style="overflow-x: scroll;overflow-y:hidden ;">
+          <!-- Content for the top-left grid -->
+            <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="/product-images/{{image.[0]}}.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+    
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <!-- Content for the top-right grid -->
+          <h5 class="mt-2">Shipping Address</h5>
+        <p class="mt-0 mb-0">{{orderDetails.deliveryDetails.name}}</p>
+        <p class="mt-0 mb-0">{{orderDetails.deliveryDetails.address}}</p>
+        <p class="mt-0 mb-0">{{orderDetails.deliveryDetails.city}},{{orderDetails.deliveryDetails.state}}</p>
+        <p class="mt-0 mb-0">{{orderDetails.deliveryDetails.zip}}</p>
+        <p class="mt-0 mb-0">{{orderDetails.deliveryDetails.phone}}</p>
+        <p class="mt-0 mb-0">{{orderDetails.deliveryDetails.email}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body" style="padding-bottom:18vh">
+          <!-- Content for the bottom-left grid -->
+           <h5 class="mt-2">Payment Details</h5>
+        <p class="mt-2 mb-0">Total amount:{{orderDetails.totalAmount.[0].total}}</p>
+        
+        <p class="mt-0 mb-0">Payment Method:{{orderDetails.paymentMethod}}</p>
+       
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <!-- Content for the bottom-right grid -->
+           {{#if (eq orderDetails.status "order-cancelled")}}
+         <h5 class="mt-2">Payment status</h5>
+          <img src="/img/stamp.jpg" style="width: 170px;">
+          {{else}}
+
+        <h5 class="mt-2">Payment status</h5>
+       <form action="/admin/order-management/{{orderId}}" method="post">
+          <div class="mt-4">
+            <select name="order" id="order" style="height:30px;">
+              <option value="order-out-for-delivery">Order out for delivery</option>
+              <option value="order-delivered">Order delivered</option>
+              <option value="order-cancelled">Order cancelled</option>
+            </select>
+          </div>
+          <input type="text" name="orderId" value="{{orderId}}" hidden>
+          <br><br>
+          <button class="btn btn-warning mt-2">Update status</button>
+         
+
+        </form>{{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

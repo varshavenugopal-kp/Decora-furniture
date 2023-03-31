@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="/stylesheets/admin.css">
+
+{{>admin-header}}
+
+
+<div class="container mt-5">
+  <button type="submit" class="btn amado-btn mb-3" style="float: right;" onclick="ExportToExcel()">Download</button>
+   <button type="submit" class="btn amado-btn mb-3" style="float: left;" onclick="printTable()">Print pdf</button>
+    <table class="table " id="sales-report">
+  <thead class="table-dark " >
+    <tr>
+     <th>Name</th>
+     <th>Product</th>
+     <th>Price</th>
+     <th>Quantity</th>
+    
+     <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sales}}
+    {{#each products}}
+   <tr>
+    <td>{{../deliveryDetails.name}}</td>
+    <td>{{products.pname}}</td>
+    <td>{{products.price}}</td>
+    <td>{{quantity}}</td>
+   
+    <td>{{mul products.price quantity}}</td>
+   </tr>
+   {{/each}}
+   {{/each}}
+  </tbody>
+</table>
+</div>
+
+
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+<script>
+function ExportToExcel(type, fn, dl) {
+    var elt = document.getElementById("sales-report");
+    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+    return dl ?
+        XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+        XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+}
+function printTable() {
+    var table = document.getElementById("sales-report");
+    var newWin = window.open('', 'Print-Window');
+    newWin.document.open();
+    newWin.document.write('<html><body onload="window.print()">' + table.outerHTML + '</html>');
+    newWin.document.close();
+    setTimeout(function () { newWin.close(); }, 10);
+  }
+
+    $(document).ready(function(){
+        $('#sales-report').dataTable();
+    })
+
+</script>

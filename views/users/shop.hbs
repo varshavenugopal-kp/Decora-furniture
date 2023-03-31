@@ -1,0 +1,284 @@
+{{>user-header}}
+        <!-- Header Area End -->
+        
+
+        <div class="shop_sidebar_area">
+              <h6 class="widget-title mb-30"><a href="/session-delet" style="font-size: 16px;">All</a></h6>
+
+            <!-- ##### Single Widget ##### -->
+            <div class="widget catagory mb-30">
+                <!-- Widget Title -->
+                <h6 class="widget-title mb-30">Catagories</h6>
+
+                <!--  Catagories  -->
+                
+                <div class="catagories-menu"> 
+                    {{!-- <ul>
+                        <li><a onclick="window.location.href='/get-products'">All</a></li>
+                    </ul> --}}
+                    {{#each categories}}
+                   
+                    <ul>
+                        <li><a id="{{category}}" onclick="getcategories(this.id)">{{category}}</a></li>
+                       
+                    </ul> 
+                    {{/each}}
+                </div>
+            </div>
+
+            <!-- ##### Single Widget ##### -->
+           
+            <!-- ##### Single Widget ##### -->
+          
+
+            <!-- ##### Single Widget ##### -->
+            <div class="widget price mb-20">
+                <!-- Widget Title -->
+                <h6 class="widget-title mb-20">Price</h6>
+                 <div class="catagories-menu"> 
+                    {{!-- <ul>
+                        <li><a onclick="window.location.href='/get-products'">All</a></li>
+                    </ul> --}}
+                   
+                   
+                    <ul>
+                        <li><a id="below-10000" onclick="getprice(this.id)">below 10000</a></li>
+                        <li><a id="below-20000" onclick="getprice(this.id)">below 20000</a></li>
+                        <li><a id="above-20000" onclick="getprice(this.id)">above 20000</a></li>
+                       
+                    </ul> 
+                  
+                </div>
+
+              
+            </div>
+           
+                <!-- Widget Title -->
+              
+               
+
+              
+            
+
+        </div>
+        
+
+        <div class="amado_product_area ">
+            <div class="container-fluid">
+
+                <div class="row">
+                     <div class="col-12 mb-4 mt-4 d-flex" style="float:end">
+               
+                 <input type="text" class="form-control" id="search-box"  onkeyup="sendData(this)" style=" width:200px; border-radius:30px; background-color:#F5F7FA; margin-left:8px;"><i class="fa-solid fa-magnifying-glass " style="z-index:10;position: relative;top: 12px;right: 30px;"></i></div>
+               
+                <div >
+                   
+                    <div id="searchResults">
+
+                    </div>
+                      {{!-- <img src="/img/userprofile.png" style="width: 70px;"> --}}
+                     <script>
+                        function sendData(e){
+                            const searchResults=document.getElementById('searchResults');
+                            let match=e.value.match(/^[a-zA-Z ]*/);
+                            let match2=e.value.match(/\s*/);
+                            if(match2[0]==e.value){
+                                searchResults.innerHTML='';
+                                return;
+                            }
+                             if(match[0]==e.value){
+                              fetch('getProducts',{
+                                method:'POST',
+                                headers:{'Content-Type':'application/json'},
+                                body:JSON.stringify({payload:e.value})
+                            }).then(res=>res.json()).then(data=>{
+                                let payload=data.payload;
+                                console.log("payyyloaad",payload)
+                                searchResults.innerHTML='';
+                                if(payload.length<1){
+                                    searchResults.innerHTML='<p>Sorry. Nothing found</p>';
+                                    return;
+                                }else{
+                                    if(payload.length>0) searchResults.innerHTML='';
+                                  payload.forEach((item,index)=>{
+                                     searchResults.innerHTML+='<hr>';
+                                    console.log(item.pname)
+                                    searchResults.innerHTML += `<div class="" onClick="window.location.href='/product-details/${item._id}'" <p>${item.pname}</p></div>`
+                                   
+                                    
+                                     //<img src = '/product-images/${item.image[0]}.jpg' width='100px'><p class='p-2'>${item.pname}</p></div>`;
+                                    
+                                });  
+                                }
+                                
+                             });
+                           return
+                             }
+                         
+                           
+                        }
+                     </script>
+
+
+                </div>
+                    <div class="col-12 mt-5">
+                        <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+                            <!-- Total Products -->
+                            {{!-- <div class="total-products">
+                                <p>Showing 1-8 0f 25</p>
+                                <div class="view d-flex">
+                                    <a href="#"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                                </div>
+                            </div> --}}
+                            <!-- Sorting -->
+                            <div class="product-sorting d-flex">
+                                {{!-- <div class="sort-by-date d-flex align-items-center mr-15">
+                                    <p>Sort by</p>
+                                    <form action="#" method="post">
+                                        <select name="select" id="sortByPrice"  onchange="sort()">
+                                            <option value="low to high" id="high">low to high</option>
+                                            <option value="high to low" id="low">high to low</option>
+                                            <option value="value">Popular</option>
+                                        </select>
+                                    </form>
+                                </div> --}}
+                                <div class="dropdown">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+   Sort by
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button" id="high-to-low" onclick="sort(this.id)">High to low</button>
+    <button class="dropdown-item" type="button" id="low-to-high" onclick="sort(this.id)">Low to high</button>
+    {{!-- <button class="dropdown-item" type="button" id="above-300" onclick="sort(this.id)">more than 300</button> --}}
+    {{!-- <button class="dropdown-item" type="button" id="all" onclick="sort(this.id)">All</button> --}}
+  </div>
+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!-- Single Product Area -->
+                    {{#each productList}}{{#if status}}
+                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                             <a href="/product-details/{{_id}}"><img src="/product-images/{{image.[0]}}.jpg" alt=""></a>  
+                                <!-- Hover Thumb -->
+                                {{!-- <img class="hover-img" src="/product-images/{{image.[0]}}.jpg" alt=""> --}}
+                            </div>
+
+                            <!-- Product Description -->
+                            <div class="product-description d-flex align-items-center justify-content-between">
+                                <!-- Product Meta Data -->
+                                <div class="product-meta-data">
+                                    <div class="line"></div>
+                                    <p class="product-price">{{price}}</p>
+                                   
+                                        {{!-- <h6>{{name}}</h6> --}}
+                                   
+                                </div>
+                                <!-- Ratings & Cart -->
+                                <div class="ratings-cart text-right">
+                                    {{!-- <div class="ratings">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div> --}}
+                                    <div class="cart">
+                                         {{#if (gte 0 product.stock )}}
+                                        <p class="text-danger">Out of Stock</p>
+                                        {{else}}
+                                        <a href="/add-to-cart/{{_id}}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
+                                    {{/if}}
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+                    {{/each}}
+                    <!-- Single Product Area -->
+                </div>   
+
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Pagination -->
+                        <nav aria-label="navigation">
+                            <ul class="pagination justify-content-end mt-50">
+                                {{#each pageArr}}
+                                <li class="page-item active"><a class="page-link" href="/pagination/{{[]}}">{{[]}}</a></li>
+                               {{/each}}
+                               
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Main Content Wrapper End ##### -->
+
+    <!-- ##### Newsletter Area Start ##### -->
+   {{>user-footer}}
+    <script>
+        function getcategories(category){
+          //let catData=document.getElementById('{{category}}').value;
+          console.log("varshaaa",category)
+          $.ajax({
+            url:'/category-filter',
+            method:'POST',
+            data:{
+                category:category
+            },
+            success:(response)=>{
+                location.reload()
+            }
+          })
+        }
+
+        function getprice(id){
+            console.log("priceee",id)
+           $.ajax({
+            url:'/price-filter',
+            method:'POST',
+            data:{
+               id
+            },
+            success:(response)=>{
+                location.reload()
+            },
+           })
+        }
+
+
+        function sort(id){
+         console.log("sortingg",id)
+         //let asc=document.getElementById('high').innerHTML.value
+         //let sortPrice=document.getElementById('sortByPrice').innerHTML
+         //var select = document.getElementById("sortByPrice");
+         //let selectedValue = select.value
+         //console.log("rdtfuygiuho",selectedValue)
+         $.ajax({
+            url:'/price-sort',
+            method:'post',
+            data:{
+                id
+            },
+            success:(response)=>{
+                location.reload()
+            }
+         })
+         
+        }
+    </script>
+    <!-- ##### Newsletter Area End ##### -->
+
+  

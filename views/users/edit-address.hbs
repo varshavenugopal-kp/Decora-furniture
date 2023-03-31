@@ -1,0 +1,69 @@
+{{>user-header}}
+<div class="cart-table-area section-padding-100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <div class="checkout_details_area mt-50 clearfix">
+
+                            <div class="cart-title">
+                                <h2>Address Edit</h2>
+                            </div>
+
+                            <form  name="myform" action="/edit-address/{{address.id}}" method="post" id="Placeorder">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <input type="text" class="form-control" name="fname" value="{{address.fname}}" placeholder="First Name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <input type="text" class="form-control" name="lname" value="{{address.lname}}" placeholder="Last Name" required>
+                                    </div>
+                            
+                                    <div class="col-12 mb-3">
+                                        <input type="email" class="form-control" name="email" placeholder="Email" value="{{address.email}}">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <input type="text" class="form-control" name="address" placeholder="Address" value="{{address.address}}">
+                                    </div>
+
+                                     <div class="col-12 mb-3">
+                                        <input type="text" class="form-control" name="country" placeholder="Country" value="{{address.country}}">
+                                    </div>
+                                     <div class="col-12 mb-3">
+                                        <input type="text" class="form-control" name="state" placeholder="State" value="{{address.state}}">
+                                    </div>
+                            
+                                    {{!-- <div class="col-12 mb-3">
+                                        <select class="w-100" name="country" id="country">
+                                            <option value="usa">United States</option>
+                                            <option value="uk">United Kingdom</option>
+                                            <option value="ger">Germany</option>
+                                            <option value="fra">France</option>
+                                            <option value="ind">India</option>
+                                            <option value="aus">Australia</option>
+                                            <option value="bra">Brazil</option>
+                                            <option value="cana">Canada</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <select class="w-100" name="state" id="country">
+                                            <option value="usa">Kerala</option>
+                                            <option value="uk">Tamilnad</option>
+                                            <option value="ger">Karnataka</option>
+                                            <option value="fra">AndhraPradesh</option>
+                                            <option value="ind">Goa</option>
+                            
+                                        </select>
+                                    </div> --}}
+                                    <div class="col-12 mb-3">
+                                        <input type="text" class="form-control" name="city" placeholder="City" value="{{address.city}}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <input type="text" class="form-control" name="zipCode" placeholder="Zip Code" value="{{address.zip}}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <input type="number" class="form-control" name="phone" min="0" placeholder="Phone No" value="{{address.phone}}">
+                                    </div>
+                                     <div class="d-flex justify-content-center">
+                                    <div class="cart-btn mt-50">
+                                <button type="submit" class="btn amado-btn ">UPDATE</a>
+                            </div></div>

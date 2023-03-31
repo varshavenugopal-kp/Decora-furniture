@@ -1,0 +1,33 @@
+{{>user-header}}
+<div class="cart-table-area section-padding-100">
+           <div class="cart-title">
+                                <h2>Addresses</h2>
+                            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    
+                    <div class="col-12 ">{{#each userData.address}}
+       <div class="card mb-3 d-flex">
+  {{!-- <h5 class="card-header">Featured</h5> --}}
+  
+  <div class="row">
+    <div class="card-body" style="width: 70%;">
+    <h5 class="card-title mb-0">{{name}}</h5>
+    <p class="card-text mb-0">{{email}}</p>
+    <p class="card-text mb-0">{{address}}</p>
+    <p class="card-text mb-0">{{country}}</p>
+    <p class="card-text mb-0">{{state}}</p>
+    <p class="card-text mb-0">{{city}}</p>
+    <p class="card-text mb-0">{{zip}}</p>
+    <p class="card-text mb-0">{{phone}}</p>
+    
+  </div>
+  <div style="width: 30%;" class="d-flex justify-content-end align-items-center">
+   <a class="btn btn-warning me-4" onclick="return confirm('Are you sure you want to delete address?')" href="/delete-address/{{id}}">Cancel</a>
+  <a class="btn btn-warning me-4" onclick="return confirm('Are you sure you want to delete address?')" href="/edit-address/{{id}}">Cancel</a>
+  
+  </div>
+  </div>
+  </div>{{/each}}</div></div></div>
+</div></div>
+{{>user-footer}}

@@ -1,0 +1,98 @@
+<div style="height: 20px; width:100%; background-color:#FBB710"></div>
+<div class="search-wrapper section-padding-100">
+        <div class="search-close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {{!-- <div class="search-content">
+                        <form action="#" method="get">
+                            {{!-- <input type="search" name="search" id="search" placeholder="Type your keyword..."> --}}
+                            {{!-- <button type="submit"><img src="img/core-img/search.png" alt=""></button> --}}
+                        </form>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Wrapper Area End -->
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+        <!-- Mobile Nav (max width 767px)-->
+        <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                <a href="index.html"><img src="img/core-img/decorablack.png" alt=""></a>
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Header Area Start -->
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html"><img src="img/core-img/decorablack.png" alt=""></a>
+                
+            </div>
+            <!-- Amado Nav -->
+            <nav class="amado-nav">
+                {{#if user}}
+                {{!-- <div  style="border:1px solid black; width:200px;height: 100px;border-radius: 7px;">
+                    <ul>
+                    <li><a style="text-decoration: none; color:black; font-size:larger;" class="nav-link ps-5" href=""><i class="fa-solid fa-user"></i></a></li>
+                    <li>  {{user.name}}</li>
+                    </ul>
+                </div> --}}
+                {{!-- <div  style=" width:200px;height: 100px;border-radius: 7px; mt-1">
+                    <ul>
+                    <li><a style="text-decoration: none; color:black; font-size:larger;" class="nav-link ps-5" href=""><i class="fa-solid fa-user"></i></a></li>
+                    <li>  {{user.name}}</li>
+                    </ul>
+                </div> --}}
+                {{!-- <div>
+                    <img src="/img/userprofile.png" style="width:90px">
+                    <p></p>
+                </div> --}}
+                <ul>
+                    <li class=""><a href="/user-profile">Profile</a></li>
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/user-shop">Shop</a></li>
+                    <li><a href="/wishlist">Wishlist</a></li>
+                    <li><a href="/cart">Cart<span class="badge badge-success" >{{cartCount}}</span></a></li>
+                    <li><a href="checkout.html">About</a></li>
+                    <li><a href="checkout.html">Contact</a></li>
+                </ul>
+                {{else}}
+                    <ul>
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/user-shop">Shop</a></li>
+                    <li><a href="product-details.html">Contact</a></li>
+                     <li><a href="product-details.html">About</a></li>
+                      <li><a href="/user-login">Sign in</a></li>
+                   
+                </ul>
+                {{/if}}
+            </nav>
+            <div class="mb-100">
+                {{!-- <a href="#" class="search-nav" onkeyup="sendData(this)"><img src="img/core-img/search.png" alt=""> Search</a> --}}
+                </div>
+            <!-- Button Group -->
+           
+           
+            <div class="social-info d-flex justify-content-between">
+                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div>
+        </header>

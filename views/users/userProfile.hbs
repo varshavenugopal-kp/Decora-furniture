@@ -1,0 +1,196 @@
+ <!-- Search Wrapper Area Start -->
+   {{>user-header}}
+        <!-- Header Area End -->
+
+        <!-- Product Catagories Area Start -->
+      {{!-- <div class="cart-table-area section-padding-100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <div class="checkout_details_area mt-50 clearfix">
+
+                            <div class="cart-title">
+                                <h2>User Profile</h2>
+                            </div>
+
+                            <for
+                            m action="/user-profile" method="post">
+                                
+                                <div class="row">
+                            
+                                    <div class="col-12 mb-3">
+                                        <input type="text" class="form-control" id="exampleInputName" name="name" value="{{userData.name}}" readonly>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <input type="email" class="form-control" id="exampleInputEmail" name="email" value="{{userData.email}}" readonly>
+                                    </div>
+                                  
+                                 
+                                   
+                                    <div class="col-12 mb-3">
+                                        <input type="number" class="form-control" id="exampleInputPhone" min="0" name="phone" value="{{userData.phone}}" readonly>
+                                    </div>
+                                  
+                                  
+                                </div>  
+                               
+                                <div class="cart-btn mt-5">
+                               
+                                <a type="submit" id="edit-Button" class="btn amado-btn" style="color: white;">Edit</a>
+                               <button type="submit" onclick="window.location.href='/user-profile'" class="btn amado-btn">Update</button>
+                        
+                            </div>
+
+
+
+                            </form>
+                            
+                              
+                        </div>
+                    </div>
+                     --}}
+                    {{!-- <div class="col-12 col-lg-4">
+                        <div class="cart-summary">
+                           
+                            <div class="pt-3" style="display: flex;
+           justify-content: center;
+           align-items: center;">
+         <i class="fa-solid fa-user" style="font-size: xx-large;"></i>      
+       </div>
+       <h6 class="text-center pt-1">user</h6>
+       <hr>
+        <div class="ms-4">
+        <p>Personal information</p>
+        <p><a href="/addressbook" style="font-size: medium;">Address Book</a></p>
+        <p><a href="/order-history" style="font-size: medium;">My Orders</a></p>
+        <p><a href="#" style="font-size: medium;">Wishlist</a></p>
+      </div>
+      <hr>
+<div class="ms-4">
+         <p><a href="/change-password" style="font-size: medium;">Change Password</a></p>
+      </div>
+      <hr>
+      <div class="ms-4 d-flex" style="padding-top: 4vh;">
+        <p><a href="/logout" style="font-size: medium;">Logout</a></p>
+        <i class="fa-solid fa-right-from-bracket ms-2"></i>
+      </div>
+      </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            {{!-- <script>
+            document.getElementById('edit-Button').onclick = function() {
+        document.getElementById('exampleInputName').readOnly = false;
+        document.getElementById('exampleInputEmail').readOnly = false;
+         document.getElementById('exampleInputPhone').readOnly = false;
+};</script>
+        </div>
+    </div> --}}
+                <!-- Single Catagory -->
+                <div class='mt-2'></div>
+<div class="container mt-5">
+		<div class="main-body">
+			<div class="row">
+			<h2 class="mt-4">User Profile</h2>
+				<div class="col-lg-8">
+					<div class="card"><form action="/user-profile" method="post">
+						<div class="card-body">
+							<div class="row mb-3">
+								<div class="col-sm-3">
+                                    
+									<h6 class="mb-0">Full Name</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" id="exampleInputName" name="name" value="{{userData.name}}" readonly>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Email</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="email" class="form-control" id="exampleInputEmail" name="email" value="{{userData.email}}" readonly>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Phone</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="number" class="form-control" id="exampleInputPhone" min="0" name="phone" value="{{userData.phone}}" readonly>
+								</div>
+							</div>
+							
+							<div class="row mt-3">
+								<div class="col-sm-3 "></div>
+								<div class="col-sm-9 text-secondary">
+									 <a type="submit" id="edit-Button" class="btn btn-warning" style="color: white; width:100px;">Edit</a>
+                               <button type="submit" onclick="window.location.href='/user-profile'" class="btn btn-warning" style="width: 100px; color:white;">Update</button>
+                        
+                                </div>
+							</div>
+						</div></form>
+					</div>
+                    <script>
+            document.getElementById('edit-Button').onclick = function() {
+        document.getElementById('exampleInputName').readOnly = false;
+        document.getElementById('exampleInputEmail').readOnly = false;
+         document.getElementById('exampleInputPhone').readOnly = false;
+};</script>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card mt-4">
+								<div class="card-body">
+									<img src="/img/wallet.jpg" style="width: 150px;">
+									<p>Wallet Amount:₹{{userData.wallet}}</p>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+                	<div class="col-lg-4">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex flex-column align-items-center text-center">
+								<img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+								<div class="mt-3">
+									<h4>{{userData.name}}</h4>
+									
+                                </div>
+							</div>
+							<hr class="my-4">
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									 <h6 class="mb-0"><i class="fa-solid fa-address-book me-3 fs-4 text-primary"></i><a href="/user-address" style="text-decoration: none;color: black;">Address Book</a></h6>
+                                </li>
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<h6 class="mb-0"><i class="fa-sharp fa-solid fa-cart-shopping me-3 fs-5 text-success"></i><a href="/order-history" style="text-decoration: none;color: black;">My Orders</a></h6>
+                                </li>
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									 <h6 class="mb-0"><i class="fa-solid fa-heart me-3 fs-5 text-danger"></i><a href="/wishlist" style="text-decoration: none;color: black;">Wish List</a></h6>
+                                </li>
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									 <h6 class="mb-0"><i class="fa-solid fa-key  me-3 fs-5 text-secondary"></i><a href="/change-password/{{userId}}" style="text-decoration: none;color: black;">Change Password</a></h6>
+                                </li>
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									 <h6 class="mb-0"><i class="fa-solid fa-right-from-bracket me-3 fs-5 text-dark"></i><a href="/logout" style="text-decoration: none;color: black;">Logout</a></h6>
+                                </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+                </div>
+               
+    <!-- ##### Main Content Wrapper End ##### -->
+
+    <!-- ##### Newsletter Area Start ##### -->
+    {{>user-footer}}

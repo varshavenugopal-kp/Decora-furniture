@@ -1,0 +1,114 @@
+ <link rel="stylesheet" href="/stylesheets/admin.css">
+
+{{>admin-header}}
+        <!-- Header Area End -->
+
+        <!-- Product Catagories Area Start -->
+
+        
+         <div class="cart-table-area section-padding-100">
+            <div class="container">
+             {{#if editCategoryData}} 
+                <form method="post" action="/admin/category-edit/{{editCategoryData._id}}" style="display: flex;">
+                
+        <input class="form-control form-control-lg" type="text" name="category" id="category" style="width: 80%;" value="{{editCategoryData}}" placeholder="Enter Category">
+         <button type="submit" class="btn amado-btn ">Update</button>
+        </form>
+        {{else}}
+        <form method="post" action="/admin/category-add" style="display: flex;">
+        <input class="form-control form-control-lg" type="text" name="category" id="category" style="width: 80%;" placeholder="Enter Category">
+         <button type="submit" class="btn amado-btn ">Add</button>
+        </form>
+        <div>
+            <p class="error text-danger">{{err}}</p>
+        </div>
+
+        {{/if}}
+
+                {{!-- <div class="row">
+                    <div class="col-12">
+                        <div class="cart-title mt-50">
+                            <h2>Category</h2>
+                        </div>
+
+                        <div class="cart-table clearfix">
+                            <table class="table table-responsive" style="table-layout: fixed; overflow:hidden">
+                                <thead>
+                                    <tr>
+                                        <th>Sl.NO</th>
+                                        <th>Category</th>
+                                        <th></th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                 {{#each categoryData}}
+    <tr>
+      <td>{{@index}}</td>
+      <td>{{category}}</td>
+     
+     
+      <td><a class="btn btn-warning"  href="/admin/category-edit/{{_id}}">Edit</a></td>
+
+     <td><a class="btn btn-dark" onclick="return confirm('Are you sure you want to delete {{category}}?')" href="/admin/category-delete/{{_id}}">Delete</a></td>
+ </tr>
+{{/each}}
+
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   
+                </div> --}}
+                <table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Sl.No</th>
+      <th scope="col">Category</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
+      
+    </tr>
+  </thead>
+  <tbody> {{#each categoryData}}
+    <tr>
+      <th scope="row">{{@index}}</th>
+      <td>{{category}}</td>
+      
+      <td><a class="btn btn-warning"  href="/admin/category-edit/{{_id}}">Edit</a></td>
+      {{!-- <td><a class="btn btn-dark" onclick="return confirm('Are you sure you want to delete {{category}}?')" href="/admin/category-delete/{{_id}}">Delete</a></td> --}}
+      {{#if status}}
+     <td><a class="btn btn-warning"  href="/admin/category-disable/{{_id}}">Disable</a></td>
+   
+   {{else}}
+    <td><a class="btn btn-warning"  href="/admin/category-enable/{{_id}}">Enable</a></td>
+   {{/if}}
+    
+    </tr>
+   {{/each}}
+  </tbody>
+</table>
+            </div>
+        </div>
+    
+    </div>
+    
+
+
+
+
+                <!-- Single Catagory -->
+               
+    <!-- ##### Main Content Wrapper End ##### -->
+
+    <!-- ##### Newsletter Area Start ##### -->
+
+    <!-- ##### Newsletter Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+   

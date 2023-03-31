@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/stylesheets/admin.css">
+
+{{>admin-header}}
+.
+<div class="container mt-5">
+  <div class="row">
+ {{#each couponList}}
+<div class="card col-md-3 " style="width: 18rem;">
+ 
+  <div class="card-body">
+    <h5 class="card-title">{{name}}</h5>
+    <ul>
+    <li class="card-text">Expiry date:{{date}}</li>
+    <li class="card-text">Minimum Items:{{items}}</li>
+    <li class="card-text">Minimum Amount:{{amount}}</li>
+    <li class="card-text">Discount type:{{discountType}}</li>
+    {{#if (eq discountType "percentage")}}
+    <li class="card-text">Discount:{{discount}}%</li>
+    {{else}}
+    <li class="card-text">Discount:{{discount}}</li>
+    </ul>{{/if}}
+    <a href="/admin/coupon-edit/{{_id}}" class="btn btn-primary">edit</a>
+    <a href="/admin/coupon-delete/{{_id}}" class="btn btn-primary">Delete</a>
+  </div>
+</div>
+{{/each}}
+  </div>
+  </div>
+
+
+{{!-- <div class="card">{{#each couponList}}
+ 
+  <div class="card-body">
+    <h5 class="card-title">{{name}}</h5>
+    <ul>
+    <li class="card-text">Expiry date:{{date}}</li>
+    <li class="card-text">Minimum Items:{{items}}</li>
+    <li class="card-text">Minimum Amount:{{amount}}</li>
+    <li class="card-text">Discount type:{{discountType}}</li>
+    {{#if (eq discountType "percentage")}}
+    <li class="card-text">Discount:{{discount}}%</li>
+    {{else}}
+    <li class="card-text">Discount:{{discount}}</li>
+    </ul>{{/if}}
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>{{/each}}
+</div> --}}
