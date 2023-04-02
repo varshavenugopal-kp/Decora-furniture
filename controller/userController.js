@@ -806,7 +806,7 @@ module.exports={
 
     ]).toArray();
     console.log("wishhh", wishlistItems);
-    res.render('users/wishlist', { user, wishlistItems,cartCount,wishlistCounts });
+    res.render('users/wishlist', { user, wishlistItems,cartCount,});
     }
     catch(err){
       next(err)
@@ -875,7 +875,7 @@ module.exports={
       try{
         
       const userId = req.session.user._id;
-      let users = req.session.user
+      let user = req.session.user
       let cartCount = null
       if (req.session.user) {
         req.session.cartCount = await getCount(req.session.user._id)
@@ -883,7 +883,8 @@ module.exports={
       console.log("usid",userId);
       const order = await orders.find({ userId:userId}).sort({_id:-1}).toArray()
       console.log("asdfgh"+order);
-      res.render('users/order-history', { users, order,cartCount })
+      console.log("iiiddd",order._id);
+      res.render('users/order-history', { user, order,cartCount })
       
       }
       catch(err){
@@ -901,8 +902,8 @@ module.exports={
         const orderId = req.params.id
      
       
-      let users = req.session.user
-      const userId = users._id
+      let user = req.session.user
+      const userId = user._id
       let cartCount = null
       if (req.session.user) {
         req.session.cartCount = await getCount(req.session.user._id)
@@ -940,7 +941,7 @@ module.exports={
             }
           ]).toArray();
           console.log(orderdatas);
-          res.render('users/order-details',{orderdatas,users,orderss,cartCount})
+          res.render('users/order-details',{orderdatas,user,orderss,cartCount})
       }
       catch(err){
         next(err)
@@ -1280,7 +1281,62 @@ module.exports={
               next(err)
             }
       
-      }
+      },
+       contactUs:(req,res,next)=>{
+            res.render('users/contact')
+       },
+
+       contact:(req,res,next)=>{
+        try{
+          let data = req.body;
+          console.log("dddd",data);
+        let response={}
+          
+              if(data){
+
+              
+                let mailTransporter = nodemailer.createTransport({
+                    service : "gmail",
+                    auth : {
+                        user:'decorafurniture61@gmail.com',
+                        pass:process.env.EMAIL_PASSWORD
+                    }
+                })
+                
+                let details = {
+                    from:data.email,
+                    to:'decorafurniture61@gmail.com',
+                    name:data.name, 
+                    subject:data.subject,
+                    text:data.message
+                }
+      
+                mailTransporter.sendMail(details,(err)=>{
+                    if(err){
+                        console.log(err);
+                    }else{
+                        console.log("Message Send Successfully ");
+                        response.status=true;
+                        console.log("hiiii");
+                        res.json(response)
+                    }
+                })
+              }
+               
+                }
+                
+                // resolve(response) 
+              
+             
+        
+        catch(err){
+          next(err)
+         }
+        },
+
+ about:(req,res,next)=>{
+  res.render('users/about')
+ }
    
 }
 

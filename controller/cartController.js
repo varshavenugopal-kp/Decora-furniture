@@ -1,6 +1,5 @@
 const users = require('../model/userSchema')
 var bcrypt = require('bcrypt')
-const { set, response } = require('../app');
 const cart = require('../model/cartSchema')
 const products = require('../model/productScema')
 const coupons=require('../model/couponSchema')
@@ -468,6 +467,7 @@ module.exports = {
       userId: userId,
       paymentMethod: order['payment'],
       paymentStatus:paymentStatus,
+      
       products: product,
       totalAmount: total,
       status: status,
@@ -493,9 +493,11 @@ module.exports = {
       cart.deleteOne({ user: ObjectId(userId) }).then((qq) => {
       let oId=response.insertedId
       req.session.orderId=response.insertedId
+      console.log("ggggg",req.body['payment']);
       if(req.body['payment']=='COD'){
         res.json({cod:true})
-      }else if(req.body['payment']=='wallet'){
+      }
+       else if(req.body['payment']=='wallet'){
         console.log("ffffffff",orderObject.totalAmount[0].total);
         let amount= -(parseFloat(orderObject.totalAmount[0].total));
         users.updateOne({_id:ObjectId(userId)},{$inc:{wallet:amount}});

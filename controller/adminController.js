@@ -563,7 +563,9 @@ orderManage:async(req,res,next)=>{
 updateOrderStatus:async(req,res,next)=>{
     try{
         let orderStatus=req.body.order;
+        console.log("kkkkkkkkkkkkk",orderStatus);
   let orderId=req.body.orderId;
+  
   await orders.updateOne({_id:ObjectId(orderId)},{$set:{status:orderStatus}})
   res.redirect('/admin/order-management/'+orderId)
     }

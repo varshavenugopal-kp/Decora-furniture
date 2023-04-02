@@ -3,7 +3,7 @@
 {{>admin-header}}
 
 
-<div class="p-5">
+{{!-- <div class="p-5">
 <table class="table" id="table">
   <thead class="thead-dark">
     <tr>
@@ -33,6 +33,59 @@
     </tbody>
 </table> 
 </div>
+<script>
+    $(document).ready(function(){
+        $('#table').dataTable();
+    })
+</script> --}}
+
+<div class="p-5">
+   <div class="cart-title text-center">
+                        <h2>ORDERS</h2>
+                            </div>
+
+
+{{!-- <div class="container"> --}}
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="table-responsive p-2">
+                    <table class="table table-striped table-bordered" id="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Total Amount</th>
+                                <th>Payment Method</th>
+                                <th>Status</th>
+                                <th></th>
+                                
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each orderList}}
+    <tr>
+      <th scope="row">{{deliveryDetails.name}}</th>
+      <td>{{deliveryDetails.address}},{{deliveryDetails.city}},{{deliveryDetails.state}}</td>
+      
+      <td>{{totalAmount.[0].total}}</td>
+     
+      <td>{{paymentMethod}}</td>
+    <td>{{status}} </td>
+<td> <a class="btn btn-warning me-4" href="/admin/order-management/{{_id}}">Details</a></td>
+     
+{{/each}}
+    </tbody>
+</table> 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function(){
         $('#table').dataTable();

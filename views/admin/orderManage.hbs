@@ -110,7 +110,7 @@
 
 <div class="container mt-5">
   <div class="row gx-0 gy-3">
-     {{!-- {{#each orderDetails.products}} --}}
+     
     <div class="col-md-6">
       <div class="card h-100">
         
@@ -158,18 +158,19 @@
       <div class="card h-100">
         <div class="card-body">
           <!-- Content for the bottom-right grid -->
-           {{#if (eq orderDetails.status "order-cancelled")}}
+           {{#if (eq orderDetails.orderstatus "order delivered")}}
          <h5 class="mt-2">Payment status</h5>
-          <img src="/img/stamp.jpg" style="width: 170px;">
+          <img src="/img/order-delivered.jpg" style="width: 170px;">
+          <p class="text-success ms-4">Order delivered</p>
           {{else}}
 
-        <h5 class="mt-2">Payment status</h5>
+        <h5 class="mt-2">Order status</h5>
        <form action="/admin/order-management/{{orderId}}" method="post">
           <div class="mt-4">
             <select name="order" id="order" style="height:30px;">
-              <option value="order-out-for-delivery">Order out for delivery</option>
-              <option value="order-delivered">Order delivered</option>
-              <option value="order-cancelled">Order cancelled</option>
+              <option value="order out for delivery">Order out for delivery</option>
+              <option value="order delivered">Order delivered</option>
+              
             </select>
           </div>
           <input type="text" name="orderId" value="{{orderId}}" hidden>

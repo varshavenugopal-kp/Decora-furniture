@@ -37,10 +37,7 @@ const orderData = mongoose.Schema({
         type:String,
         required:true
     },
-    orderStatus:{
-        type:String,
-        required:true
-    }
+    
 
     
 })

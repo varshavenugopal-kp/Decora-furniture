@@ -30,7 +30,7 @@
                                 <ol class="carousel-indicators">
                                     <div class="d-flex">
                                         {{#each product.image}}
-                                        <img id="{{@index}}" onclick="imgZoom(this.id)" class="ms-2" src="/product-images/{{[]}}.jpg" alt="" width="200px">
+                                        <img id="{{@index}}" onclick="imgZoom(this.id)" class="ms-2" src="/product-images/{{[]}}.jpg" alt="" width="30%">
                                         {{/each}}
                                     </div>
 
@@ -59,6 +59,7 @@
                                 </a>
                                 <div class="line mt-4"></div>
                                <p class="product-price"><span>₹{{product.price}}</span></p>
+                               <p class="product-brand"><span>{{product.brand}}</span></p>
                                 <!-- Ratings & Review -->
                                 <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
                                     {{!-- <div class="ratings">
