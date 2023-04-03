@@ -4,7 +4,7 @@
 
 
 <section class="ftco-section mt-5" >
-        <form  name="myform" id="checkout-form"   method="post" class="billing-form" >
+        <form  name="couponForm" id="checkout-form" onsubmit="return checkCoupon()"  method="post" class="billing-form" >
         <div class="container" >
             <div class="row justify-content-center">
                 <div class="col-xl-7 ftco-animate" style="border:rgb(197, 197, 197); border-width:1px; border-style:solid;">
@@ -64,7 +64,7 @@
                                 <button type="submit" class="btn amado-btn ">Add</a>
                             </div></div>
                             <div>
-                                <p class="text-danger">{{err}}</p>
+                                <p class="text-danger" id="errMsg"></p>
                             </div>
                             </div>
                             </div>

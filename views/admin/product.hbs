@@ -29,10 +29,10 @@
                                 <div class="row">
                                     
                                     <div class="col-12 mb-3">
-                                        <input type="text" name="pname" class="form-control" id="name" placeholder="Product Name" value="">
+                                        <input type="text" name="pname" class="form-control" id="name" placeholder="Product Name" value="{{info.pname}}">
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <input type="text" name="brand" class="form-control" id="brand" placeholder="Brand" value="">
+                                        <input type="text" name="brand" class="form-control" id="brand" placeholder="Brand" value="{{info.brand}}">
                                     </div>
                                     <div class="col-12 mb-3">
                                         <select class="w-100" id="country" name="category">
@@ -44,17 +44,17 @@
                                     </select>
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <input type="text" name="price" class="form-control mb-3" id="price" placeholder="Price" value="">
+                                        <input type="text" name="price" class="form-control mb-3" id="price" placeholder="Price" value="{{info.price}}">
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <input type="text" name="stock" class="form-control" id="stock" placeholder="Stock" value="">
+                                        <input type="text" name="stock" class="form-control" id="stock" placeholder="Stock" value="{{info.stock}}">
                                     </div>
-                                    <div class="col-12 mb-3">
+                                    {{!-- <div class="col-12 mb-3">
                                         <input type="text" name="discount" class="form-control" id="discount" placeholder="Discount" value="">
                                     </div>
-                                   
+                                    --}}
                                     <div class="col-12 mb-3">
-                                        <textarea name="desc" class="form-control w-100" id="comment" cols="30" rows="10" placeholder="enter a description about the product" noresize></textarea>
+                                        <textarea name="desc" class="form-control w-100" id="comment" cols="30" rows="10" placeholder="enter a description about the product" value="{{info.desc}}" noresize></textarea>
                                     </div>
 
                                     <div class="col-12 mb-3">

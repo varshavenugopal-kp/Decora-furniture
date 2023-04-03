@@ -445,7 +445,7 @@ module.exports = {
      const formatDate=date.toLocaleString('en-US',options)
      const orderDate=formatDate
     let status = order['payment'] === 'cod' ? 'placed' : 'pending';
-    let paymentStatus=order['payment']==='COD'?'not paid':'paid'
+    let paymentStatus=order['payment']==='cod'?'not paid':'paid'
     if(order['payment']=='wallet'){
       status='placed'
       paymentStatus='paid'
@@ -494,7 +494,7 @@ module.exports = {
       let oId=response.insertedId
       req.session.orderId=response.insertedId
       console.log("ggggg",req.body['payment']);
-      if(req.body['payment']=='COD'){
+      if(req.body['payment']=='cod'){
         res.json({cod:true})
       }
        else if(req.body['payment']=='wallet'){
@@ -596,6 +596,7 @@ showCoupons:async(req,res,next)=>{
   let couponInfo=req.body.couponCode;
   let discountAmount
   console.log("asdfghjk"+couponInfo);
+  
   let response={}
   
   let couponCode=await coupons.findOne({name:couponInfo})
@@ -612,6 +613,12 @@ showCoupons:async(req,res,next)=>{
     console.log("input");
     discountAmount=0
   }
+  let expiry=new Date(couponCode.date)
+            let today=new Date()
+            let exp=(expiry-today)/1000*60*60*24
+            console.log(exp);
+            // console.log(totalPrice);
+           
   console.log("avavvavavavavavavavav",discountAmount);
   req.session.discountAmount= total[0].total-discountAmount
   console.log("disssss"+req.session.discountAmount);
@@ -622,6 +629,10 @@ showCoupons:async(req,res,next)=>{
     console.log("vghvhv");
     req.session.rmsg="not eligible"
    console.log(req.session.rmsg);
+   }
+   else  if( exp<0 ){
+    req.session.rmsg="date expired"
+    console.log(req.session.rmsg);
    }
 // }else{
 //   if()

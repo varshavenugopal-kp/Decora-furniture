@@ -19,9 +19,9 @@ module.exports={
             let userCount=await user.countDocuments();
             let orderCount=await orders.countDocuments();
             let productCount=await product.countDocuments();
-            let revenue = await orders.aggregate([
+            let revenueData = await orders.aggregate([
                 {
-                  $match: { status: 'paid' } 
+                  $match: { paymentStatus: 'paid' } 
                 },
                 {
                   $unwind : '$totalAmount'
@@ -30,8 +30,9 @@ module.exports={
                   $group : {_id:null,revenue:{$sum:'$totalAmount.total'}}
                 }
               ]).toArray();
-              console.log("adminn",revenue);
-           res.render('admin/dashboard-admin',{userCount,orderCount,productCount})
+              console.log("adminn",revenueData);
+              console.log("hhhhhhhhh",revenueData);
+           res.render('admin/dashboard-admin',{userCount,orderCount,productCount,revenue:revenueData[0].revenue})
         }
         catch(err){
            next(err)
@@ -172,8 +173,10 @@ productAdd:async(req,res,next)=>{
     try{
          let categoryData=await category.find().toArray()
     var err=req.session.msg
-    res.render('admin/product',{err,categoryData})
+    info=req.session.info
+    res.render('admin/product',{err,categoryData,info})
     req.session.msg=null
+    req.session.info=null
     }
     catch(err){
         next(err)
@@ -184,7 +187,7 @@ addProduct:async(req,res,next)=>{
     try{
         image = req.files.image
     productInfo=req.body
-   
+   req.session.info=req.body
     var rmsg
             var nameRegex = /^([A-Za-z0-9_ ]){3,20}$/i;
             var priceRegex =/^([0-9.]){1,}$/i;

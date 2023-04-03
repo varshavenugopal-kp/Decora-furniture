@@ -109,3 +109,56 @@ function placeOrder(){
         return false;
     }
   }
+  function checkCoupon(){
+    let coupon = document.couponForm.name.value;
+    let expiryDate = document.couponForm.date.value;
+    let minItems = document.couponForm.items.value;
+    let minAmount = document.couponForm.amount.value;
+    let discount = document.couponForm.discount.value;
+
+    let couponRegex=/^([A-Za-z0-9]){3,20}$/gm;
+    let itemRegex=/^([0-9]){1,6}$/gm;
+    let amountRegex=/^([0-9]){1,6}$/gm;
+    let discountRegex=/^([0-9]){1,6}$/gm;
+    console.log(coupon);
+    console.log(expiryDate);
+    console.log(minItems);
+
+    if(coupon == ''){
+      document.getElementById('errMsg').innerHTML="Coupon field required";
+        return false;
+    }
+    else if(couponRegex.test(coupon) == false){
+      document.getElementById('errMsg').innerHTML="Invalid coupon code";
+        return false;
+    }
+    else if(expiryDate == ''){
+      document.getElementById('errMsg').innerHTML="Date field required";
+        return false;
+    }
+    else if(minItems == ''){
+      document.getElementById('errMsg').innerHTML="Minimum items field required";
+        return false;
+    }
+    else if(itemRegex.test(minItems) == false){
+      document.getElementById('errMsg').innerHTML="Minimum items should be a number";
+        return false;
+    }
+    else if(minAmount == ''){
+      document.getElementById('errMsg').innerHTML="Minimum amount field required";
+        return false;
+    }
+    else if(amountRegex.test(minAmount) == false){
+      document.getElementById('errMsg').innerHTML="Minimum amount should be a number";
+        return false;
+    }
+    else if(discount == ''){
+      document.getElementById('errMsg').innerHTML="Discount field required";
+        return false;
+    }
+    else if(discountRegex.test(discount) == false){
+      document.getElementById('errMsg').innerHTML="Discount should be a number";
+        return false;
+    }
+
+  } 

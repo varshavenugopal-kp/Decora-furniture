@@ -363,8 +363,11 @@ module.exports={
     userSignup:(req,res,next)=>{
       try{
           var err=req.session.rmsg
-        res.render('users/user-signup',{err})
-        req.session.msg=null
+          var data=req.session.info
+          console.log("fffff",data);
+        res.render('users/user-signup',{err,data})
+        req.session.rmsg=null
+        req.session.data=null
       }
       catch(err){
         next(err)
@@ -375,6 +378,7 @@ module.exports={
       try{
         let userInfo=req.body
         var rmsg
+        req.session.info=req.body
         var nameRegex = /^([A-Za-z ]){5,25}$/gm;
         var pswdregx = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]){8,16}/gm
         var emailregx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -421,9 +425,10 @@ module.exports={
             userData.password=await bcrypt.hash(userData.password,10)
           await userCollection.insertOne(userData).then((data) =>{
             console.log(data);
+           
           })
-          req.session.user=req.body
-          res.redirect('/')
+          // req.session.user=req.body
+          res.redirect('/user-login')
         }
       }
       catch(err){
@@ -941,7 +946,7 @@ module.exports={
             }
           ]).toArray();
           console.log(orderdatas);
-          res.render('users/order-details',{orderdatas,user,orderss,cartCount})
+          res.render('users/order-details',{orderdatas,user,orderss,cartCount,orderId})
       }
       catch(err){
         next(err)
@@ -1035,7 +1040,7 @@ module.exports={
         },
       ]).toArray();
       let data=selectedAddress[0].address;
-      let name=selectedAddress[0].name;
+      let name=data.name;
       let arr=name.split(' ');
       let address={
         fname:arr[0],
@@ -1048,6 +1053,7 @@ module.exports={
         zip:data.zip,
         phone:data.phone
       }
+      console.log("address",address,name);
       req.session.selectedAddress=address
       res.redirect('/place-order')
 

@@ -21,10 +21,10 @@ const productData=mongoose.Schema({
         type:Number,
         required : true
     },
-    discount:{
-        type:Number,
-        required:true
-    },
+    // discount:{
+    //     type:Number,
+    //     required:true
+    // },
     description:{
         type:String,
         required : true

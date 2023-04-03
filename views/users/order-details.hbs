@@ -179,7 +179,7 @@
                                             <!-- Cash on delivery -->
                                             <div class="mt-3" >
                                                 <input type="radio" id="cod" name="payment" value="cod">
-                                                <label class="custom-control-label" for="cod">Delayed deliver</label>
+                                                <label class="custom-control-label" for="cod" checked>Delayed deliver</label>
                                             </div>
                                             <!-- Paypal -->
                                             <div>
@@ -196,9 +196,9 @@
                                             </div>
                                         </div></div>
       <div class="modal-footer">
-       {{#each orderdatas}}
-        <a class="btn btn-warning"   href="/cancel-order/{{_id}}">submit</a>
-        {{/each}}
+      
+        <a class="btn btn-warning"   href="/cancel-order/{{orderId}}">submit</a>
+        
       </div>
     </div>
   </div>
