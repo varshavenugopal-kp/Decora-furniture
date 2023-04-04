@@ -10,8 +10,8 @@
             <div class="container">
              {{#if editCategoryData}} 
                 <form method="post" action="/admin/category-edit/{{editCategoryData._id}}" style="display: flex;">
-                
-        <input class="form-control form-control-lg" type="text" name="category" id="category" style="width: 80%;" value="{{editCategoryData}}" placeholder="Enter Category">
+               
+        <input class="form-control form-control-lg" type="text" name="category" id="category" style="width: 80%;" value="{{editCategoryData.category}}" placeholder="Enter Category">
          <button type="submit" class="btn amado-btn ">Update</button>
         </form>
         {{else}}

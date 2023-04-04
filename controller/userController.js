@@ -1197,11 +1197,11 @@ module.exports={
     userAddress:async(req,res,next)=>{
     
         try{
-          let users=req.session.user
+          let user=req.session.user
      let userId=req.session.user._id;
      let userData=await userCollection.findOne({_id:ObjectId(userId)})
      console.log("pranav"+userData.name);
-     res.render('users/userAddress',{userData,users})
+     res.render('users/userAddress',{userData,user})
        }
        catch(err){
          next(err)

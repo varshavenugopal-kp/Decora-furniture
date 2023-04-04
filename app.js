@@ -33,6 +33,10 @@ hb.handlebars.registerHelper('gte',function(a,b){
 
 hb.handlebars.registerHelper('mul',function(a,b){
   return a*b;
+});
+
+hb.handlebars.registerHelper('inc',function (a,b){
+  return parseInt(a)+1;
 })
 
 app.use(session({secret:"key",saveUninitialized: true,resave :false,cookie:{maxAge:60000*60}}))

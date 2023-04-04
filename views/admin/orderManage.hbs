@@ -113,19 +113,18 @@
      
     <div class="col-md-6">
       <div class="card h-100">
-        
+        {{#each orderDetails.products}}
         <div class="card-body" style="overflow-x: scroll;overflow-y:hidden ;">
           <!-- Content for the top-left grid -->
             <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="/product-images/{{orderDetails.image.[0]}}.jpg" alt="Card image cap">
+          <img class="card-img-top" src="/product-images/{{products.image.[0]}}.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-    
+            <h5 class="card-title">{{products.pname}}</h5>
+          
           </div>
         </div>
         </div>
+        {{/each}}
       </div>
     </div>
     <div class="col-md-6">

@@ -238,6 +238,7 @@ addProduct:async(req,res,next)=>{
       res.redirect('/admin/product-add')
             }
             
+            
             else if(paraRegex.test(productInfo.desc)!=true){
                 rmsg="enter valid description"
                 req.session.msg=rmsg
@@ -306,7 +307,7 @@ addProduct:async(req,res,next)=>{
     console.log("daaaaaaaaata",productData);
     product.insertOne(productData).then((data)=>{
                         req.session.product=req.body
-          res.redirect('/admin/product-add')
+          res.redirect('/admin/product-list')
                     })
              }
       
@@ -367,7 +368,7 @@ productEdit:async(req,res,next)=>{
          var productId=req.params.id
     let categoryData=await category.find().toArray()
     console.log("nihaaal",categoryData);
-    products=await product.findOne({_id:ObjectId(productId)})
+   let products=await product.findOne({_id:ObjectId(productId)})
     
     res.render('admin/product-edit',{products,categoryData})
     }
@@ -382,13 +383,12 @@ editProduct:(req,res,next)=>{
     console.log("proiid"+productId);
     productInfo=req.body;
     product.updateOne({_id:ObjectId(productId)},{$set:{
-        name:productInfo.pname,
+        pname:productInfo.pname,
         brand:productInfo.brand,
-        catagory:productInfo.category,
+        category:productInfo.category,
         price:productInfo.price,
         stock:productInfo.stock,
-        discount:productInfo.discount,
-        description:productInfo.desc,
+        desc:productInfo.desc,
      }}).then(()=>{
         obj=req.files;
         
@@ -429,7 +429,7 @@ categoryAdd:async(req,res,next)=>{
     var categoryData=await category.find().toArray()
     res.render('admin/category',{err,categoryData,editCategoryData})
     req.session.msg=null
-    req.session.editCategory=null; 
+    req.session.editCategory=null
     }
     catch(err){
         next(err)
@@ -444,7 +444,7 @@ addCategory:async(req,res,next)=>{
     let categoryData=await category.findOne({category:categoryInfo.category})
     var respons={}
     var msg
-        var nameRegex = /^([A-Za-z_ ]){3,20}$/i;
+        var nameRegex = /^([A-Za-z ]){5,25}$/gm;
         if(categoryInfo.category==''){
             msg='enter a category'
             req.session.msg=msg
@@ -490,7 +490,7 @@ categoryEdit:async(req,res,next)=>{
   console.log("iddddddd",categoryId);
   categoryData=await category.findOne({_id:ObjectId(categoryId)})
   console.log("cat data",categoryData);
-  req.session.editCategory=categoryData.category;
+  req.session.editCategory=categoryData;
   res.redirect('/admin/category-add')
     }
     catch(err){
@@ -503,8 +503,10 @@ updateCategory:async(req,res,next)=>{
     try{
          categoryId=req.params.id
   let updateData=req.body
-  await category.updateOne({_id:ObjectId(categoryId)},{$set:{category:updateData.catagory}})
-  res.redirect('/admin/category-edit/'+req.params.id)
+  console.log(updateData);
+   category.updateOne({_id:ObjectId(categoryId)},{$set:{category:updateData.category}})
+  
+  res.redirect('/admin/category-add/')
     }
     catch(err){
         next(err)
@@ -548,7 +550,7 @@ orderManage:async(req,res,next)=>{
     try{
          orderId=req.params.id;
     orderDetails=await orders.findOne({_id:ObjectId(orderId)})
-
+     console.log("orderdata",orderDetails);
     res.render('admin/orderManage',{orderDetails,orderId})
     }
     catch(err){
