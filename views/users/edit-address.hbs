@@ -6,10 +6,10 @@
                         <div class="checkout_details_area mt-50 clearfix">
 
                             <div class="cart-title">
-                                <h2>Address Edit</h2>
+                                <h2>Address Edit,{{id}}</h2>
                             </div>
 
-                            <form  name="myform" action="/edit-address/{{address.id}}" method="post" id="Placeorder">
+                            <form  name="myform" action="/edit-address/{{id}}" method="post" id="Placeorder">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <input type="text" class="form-control" name="fname" value="{{address.fname}}" placeholder="First Name" required>
@@ -67,3 +67,4 @@
                                     <div class="cart-btn mt-50">
                                 <button type="submit" class="btn amado-btn ">UPDATE</a>
                             </div></div>
+                            {{>user-footer}}

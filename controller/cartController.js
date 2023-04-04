@@ -595,28 +595,34 @@ showCoupons:async(req,res,next)=>{
   console.log("yyyy",total);
   let couponInfo=req.body.couponCode;
   let discountAmount
+  let couponCode=await coupons.findOne({name:couponInfo})
   console.log("asdfghjk"+couponInfo);
+  let expiry=new Date(couponCode.date)
+            let today=new Date()
+            let exp=(expiry-today)/1000*60*60*24
+            console.log(exp);
+  
   
   let response={}
   
-  let couponCode=await coupons.findOne({name:couponInfo})
+  // let couponCode=await coupons.findOne({name:couponInfo})
   if(couponCode?.discountType=="percentage"){
-    if(total[0].total>couponCode.amount&& count>couponCode.items){
+    if(total[0].total>=couponCode.amount&& count>=couponCode.items && exp>0){
        console.log("total",total[0].total,count);
        discountAmount= (total[0].total*couponCode.discount)/100
     }
     
-  }else if(total[0].total>couponCode.amount && couponCode.items){
+  }else if(total[0].total>=couponCode.amount && count>=couponCode.items && exp>0){
     console.log("inside",total[0].total,count);
     discountAmount=couponCode.discount;
   }else{
     console.log("input");
     discountAmount=0
   }
-  let expiry=new Date(couponCode.date)
-            let today=new Date()
-            let exp=(expiry-today)/1000*60*60*24
-            console.log(exp);
+  // let expiry=new Date(couponCode.date)
+  //           let today=new Date()
+  //           let exp=(expiry-today)/1000*60*60*24
+  //           console.log(exp);
             // console.log(totalPrice);
            
   console.log("avavvavavavavavavavav",discountAmount);
@@ -625,7 +631,7 @@ showCoupons:async(req,res,next)=>{
   let cartCount=req.session.count
   console.log("total"+total[0].total);
  console.log("ccodde",couponCode);
-  if(couponCode.amount>=total[0].total && couponCode.items>=count){
+  if(couponCode.amount>total[0].total || couponCode.items>count){
     console.log("vghvhv");
     req.session.rmsg="not eligible"
    console.log(req.session.rmsg);

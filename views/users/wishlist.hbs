@@ -40,8 +40,11 @@
                                         <td class="price">
                                             <span>{{products.price}}</span>
                                         </td>
-                                         {{#if (gte 0 product.stock )}}
-                                        <p class="text-danger">Out of Stock</p>
+                                         {{#if (gte 0 products.stock )}}
+                                         <td class="stock">
+                                             <p class="text-danger">Out of Stock</p>
+                                         </td>
+                                       
                                         {{else}}
                                         <td class="price">
                                             <span><a href="/add-to-cart/{{products._id}}"><i class="fa-solid fa-cart-shopping"></i></span></a>

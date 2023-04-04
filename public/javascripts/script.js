@@ -25,6 +25,7 @@ function placeOrder(){
     let zipCode = document.myform.zipCode.value;
     let phone = document.myform.phone.value;
     let email = document.myform.email.value;
+   
 
     let nameRegx=/^([A-Za-z]){3,20}$/gm
     let streetRegx=/^([A-Za-z]){3,20}$/gm

@@ -578,7 +578,7 @@ updateOrderStatus:async(req,res,next)=>{
 },
 orderList:async(req,res,next)=>{
     try{
-         orderList=await orders.find().toArray()
+         orderList=await orders.find().sort({_id:-1}).toArray()
   res.render('admin/orders',{orderList})
     }
     catch(err){
@@ -589,7 +589,7 @@ orderList:async(req,res,next)=>{
 addCoupon:(req,res,next)=>{
     try{
         var err=req.session.msg
-    res.render('admin/coupon-Add',{err})
+    res.render('admin/add-coupon',{err})
     req.session.msg=null
     }
     

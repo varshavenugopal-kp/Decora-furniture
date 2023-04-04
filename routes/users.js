@@ -110,17 +110,17 @@ router.post('/category-filter',userController.getCategoryFilter)
 
 router.post('/price-filter',userController.getPriceFilter)
 router.post('/price-sort',userController.getPriceSort)
-router.get('/logout',userController.logout)
-router.get('/invoice/:id',userController.invoice)
+router.get('/logout',verifyLogin,userController.logout)
+router.get('/invoice/:id',verifyLogin,userController.invoice)
 
 router.get('/user-address',verifyLogin,userController.userAddress)
-router.get('/edit-address/:id',userController.editAddress)
-router.post('/edit-address',userController.addressEdit)
+router.get('/edit-address/:id',verifyLogin,userController.editAddress)
+router.post('/edit-address/:id',verifyLogin,userController.addressEdit)
 
 router.get('/pagination/:id',userController.pagination)
 
-router.get('/contact',userController.contactUs)
-router.post('/contact',userController.contact)
+router.get('/contact',verifyLogin,userController.contactUs)
+router.post('/contact',verifyLogin,userController.contact)
 
 router.get('/about',userController.about)
 

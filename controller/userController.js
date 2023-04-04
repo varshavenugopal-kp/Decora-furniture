@@ -1219,7 +1219,7 @@ module.exports={
          }
       },
 
-      editAddress:async(req,res)=>{
+      editAddress:async(req,res,next)=>{
       try{
          let id=req.params.id;
         console.log("id:"+id);
@@ -1250,7 +1250,7 @@ module.exports={
           phone:data.phone
         }
         req.session.selectedAddress=address
-        res.render('users/edit-address',{address})
+        res.render('users/edit-address',{address,id})
   
         }
       
@@ -1261,16 +1261,19 @@ module.exports={
       },
 
 
-      addressEdit:async(req,res)=>{
+      addressEdit:async(req,res,next)=>{
         try{
           let data = req.body;
           let addressId = req.params.id;
           let userId = req.session.user._id;
           console.log("kooi",data);
+          console.log("uidd",userId);
           console.log("kooid",addressId);
+          let userr = await userCollection.findOne({_id:ObjectId(userId),"address.id":addressId});
+          console.log("uerchk",userr);
           await userCollection.updateMany({_id:ObjectId(userId),"address.id":addressId},
           {
-            $set : {"address.$.name":data.fname+" "+data.lname,"address.$.street":data.street,"address.$.state":data.state,"address.$.city":data.city,
+            $set : {"address.$.name":data.fname+" "+data.lname,"address.$.address":data.address,"address.$.state":data.state,"address.$.city":data.city,
             "address.$.zip":data.zipCode,"address.$.phone":data.phone,"address.$.email":data.email}
           });
           res.redirect('/user-address');
@@ -1289,7 +1292,8 @@ module.exports={
       
       },
        contactUs:(req,res,next)=>{
-            res.render('users/contact')
+        let user=req.session.user
+            res.render('users/contact',{user})
        },
 
        contact:(req,res,next)=>{
