@@ -236,16 +236,7 @@ addProduct:async(req,res,next)=>{
                 rmsg="stock cannot be empty"
                 req.session.msg=rmsg
       res.redirect('/admin/product-add')
-            }else if(priceRegex.test(productInfo.discount)!=true){
-                rmsg="enter valid discount"
-                req.session.msg=rmsg
-      res.redirect('/admin/product-add')
-            }else if(productInfo.discount==''){
-                rmsg="discount cannot be empty"
-                req.session.msg=rmsg
-      res.redirect('/admin/product-add')
             }
-            
             else if(paraRegex.test(productInfo.desc)!=true){
                 rmsg="enter valid description"
                 req.session.msg=rmsg
