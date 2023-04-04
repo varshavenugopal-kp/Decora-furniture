@@ -237,6 +237,7 @@ addProduct:async(req,res,next)=>{
                 req.session.msg=rmsg
       res.redirect('/admin/product-add')
             }
+            
             else if(paraRegex.test(productInfo.desc)!=true){
                 rmsg="enter valid description"
                 req.session.msg=rmsg
