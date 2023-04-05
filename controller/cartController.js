@@ -286,6 +286,7 @@ module.exports = {
           console.log(response);
           res.json({removeProduct:true});
           let total=await getTotalAmount(req.session.user._id);
+          
         })
       }
 
@@ -411,7 +412,7 @@ module.exports = {
      let userData=await users.findOne({_id:ObjectId(userId)})
     // console.log("asdfghj"+totalAmount);
     console.log("wallett",userData.wallet);
-    if (req.session.total){
+    if (req.session.discountAmount){
       total[0].total=req.session.total
     }
     
